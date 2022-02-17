@@ -33,6 +33,16 @@
     </div>
 
     <div class="container">
+
+        @if (session()->has('success_message'))
+            <div class="alert alert-success p-2"> <b> {{ session()->get('success_message') }} </b> </div>
+        @endif
+
+
+        @if (session()->has('error_message'))
+            <div class="alert alert-danger p-2"> <b> {{ session()->get('error_message') }} </b> </div>
+        @endif
+
         @yield("content")
     </div>
 </body>

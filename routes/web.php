@@ -34,6 +34,7 @@ require __DIR__.'/auth.php';
 
 Route::get("/posts/create", [PostController::class, 'create'])
 ->name("posts.create");
+//->middleware("auth");
 
 
 Route::post("/posts/store",  [PostController::class, 'store'])
