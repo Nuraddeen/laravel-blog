@@ -31,6 +31,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+        /**
+         * ONE TO ONE (each user has only one contact_info and vice versa)
+         * ONE To MANY (a user has many posts, each post belongs to one user only)
+         * MANY TO MANY (student can register many courses, a single course can be registered by many students)
+         */
+
         //get the request body
         //   dd($request->get("body"));
         //save the post

@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ]; 
+
+
+    public function posts() {
+
+        //from posts table, use the column called user_id and match it agains
+        // a id column from users table
+        return $this->hasMany("App\Models\Post", "user_id", "id");
+    }
 }

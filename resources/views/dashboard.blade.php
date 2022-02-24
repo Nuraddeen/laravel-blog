@@ -25,4 +25,50 @@
 
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12 text-center mt-5">
+        <h4>Recent Posts </h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>SN</th>
+                     <th>Title</th>
+                     <th> Date</th>
+                     <th>Action</th>
+                </tr>
+
+
+                @foreach($recentPosts as $post)
+                    <tr>
+                        <td> {{ $loop->iteration }}</td>
+                        <td>
+                            <h5> {{ $post->title }} </h5>
+                            {{ $post-> body }}
+
+                            </td>
+
+                            <td> {{ $post-> created_at }}</td>
+
+                        <td>Edit Delete</td>
+
+                    </tr>
+
+                @endforeach
+
+                <tr>
+                    <td colspan="4">
+                         {{ $recentPosts->links() }}
+                    </td>
+                </tr>
+                
+
+            </table>
+
+           
+        </div>
+    </div>
+</div>
 @endsection

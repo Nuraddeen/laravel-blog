@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,15 @@ Route::get('/dashboard', function () {
     $authUser = auth()->user();//using auth() helper function
  //   $authUser = Auth::user();//
 
-    return view('dashboard', ['user' => $authUser]);
+ //query.
+ 
+    return view('dashboard', [
+        'user' => $authUser,
+       // 'posts' =>  $authUser->posts,
+       //oldest is the opposite of latest
+       // 'recentPosts' => Post::where("user_id", "=", $authUser->id)->latest()->take(3)->get(),
+        'recentPosts' => Post::where("user_id", "=", $authUser->id)->latest()->paginate(3),
+    ]);
 })->middleware(['auth:web'])->name('dashboard');
 
 require __DIR__.'/auth.php';
